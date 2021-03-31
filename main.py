@@ -2,8 +2,8 @@ from copy import deepcopy
 import random
 from datetime import datetime as dt
 
-TOP = True
-BOTTOM = False
+TOP = "top"
+BOTTOM = "bottom"
 
 HELM = "helm"
 SHIRT = "shirt"
