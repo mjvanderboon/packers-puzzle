@@ -20,9 +20,6 @@ class Icon:
             return True
         return False
 
-    def __cmp__(self,icon):
-        return not self.__eq__(icon)
-
 HelmTop = Icon(HELM,TOP)
 HelmBottom = Icon(HELM,BOTTOM)
 ShirtTop = Icon(SHIRT,TOP)
