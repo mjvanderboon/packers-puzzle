@@ -91,10 +91,19 @@ class Grid:
             raise IndexError(f"No index {x},{y} in Grid")
 
     def show(self):
+        """Shows all items in grid"""
         for x in range(0,3):
             for y in range(0,3):
                 item = self[x,y]
                 print(f"({x},{y}): {item.id}, {item.cw}")
+
+    def full(self):
+        """Returns if all grid slots are filled"""
+        for x in range(0,3):
+            for y in range(0,3):
+                if self[x,y] is None:
+                    return False
+        return True
 
 class Item:
     def __init__(self,id,top,right,bottom,left,cw=0):
@@ -155,7 +164,6 @@ def possible(grid,item,i,j):
                     return False
     return True
 
-
 def solve():
     #global grid
     for x in range(0,3):
@@ -167,6 +175,9 @@ def solve():
                         grid[x,y] = item
                         solve()
 
+                        if grid.full():
+                            return
+
                         # Reset
                         grid[x,y] = None
                 # No item fits here
@@ -174,7 +185,6 @@ def solve():
                 return
     # We're done!
     grid.show()
-    raise ValueError()
 
 item1 = Item(
     id=1,
@@ -257,8 +267,5 @@ if __name__=="__main__":
     # exists at least 1 solution. Otherwise it will
     # get stuck.
     t1 = dt.now()
-    try:
-        solve()
-    except:
-        pass
+    solve()
     print(dt.now()-t1)
