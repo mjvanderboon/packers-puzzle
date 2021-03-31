@@ -144,7 +144,7 @@ def possible(grid,item,i,j):
             if x==i and y==j:
                 continue
             if x==i and y>j:
-                # Top
+                # Bottom
                 if item.bottom != _item.top:
                     return False
             elif x>i and y==j:
@@ -152,7 +152,7 @@ def possible(grid,item,i,j):
                 if item.right != _item.left:
                     return False
             elif x==i and y<j:
-                # Bottom
+                # Top
                 if item.top != _item.bottom:
                     return False
             elif x<i and y==j:
